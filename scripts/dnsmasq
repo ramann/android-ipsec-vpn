@@ -1,0 +1,2 @@
+#!/system/bin/sh
+exec /system/bin/dnsmasq.real -C /etc/dnsmasq.conf
