@@ -2,7 +2,7 @@
 
 ## These are instructions to set up a not (terribly) invasive Android phone. 
 
-They were inspired by and build upon instructions that Jacob Appelbaum created for removing various sensors from the first generation Motorola Moto E (about $60 in December 2015). When Clear Wireless turned of their network in November, a colleague provided me with a script to tether while connected to a VPN. I have modifed it for use with USB tethering and added a couple routing entries to fix a DHCP re-lease issue. Additionally I created a wrapper around dnsmasq which can be used to change the DHCP range and lease time via a config file. I also have a couple of iptables commands that run at boot which disallow outbound traffic that is not related to the VPN or tethering. You don't need to log in with a Google account for any of this to work - all necessary apks have been included and you can take a look at FDroid if you want to check out some other apps.
+They were inspired by and build upon instructions that Jacob Appelbaum created for removing various sensors from the first generation Motorola Moto E (about $60 in December 2015). When Clear Wireless turned of their network in November, a colleague (Paul Donohue) provided me with a script to tether while connected to a VPN. I have modifed it for use with USB tethering and added a couple routing entries to fix a DHCP re-lease issue. Additionally I created a wrapper around dnsmasq which can be used to change the DHCP range and lease time via a config file. I also have a couple of iptables commands that run at boot which disallow outbound traffic that is not related to the VPN or tethering. You don't need to log in with a Google account for any of this to work - all necessary apks have been included and you can take a look at FDroid if you want to check out some other apps.
 
 Note: I used Ubuntu 14.04 when rooting - search around for other steps if you're using a different (non-Linux) OS. You'll need to make some modifications to get this working with WiFi instead of USB tethering (probably just change the iptables entries from rndis0 to wlan0 and the DHCP server's IP from 42.x to 43.x).
 
@@ -61,7 +61,7 @@ Note: I used Ubuntu 14.04 when rooting - search around for other steps if you're
 
 	- Confirm installation and then Reboot -> System
 
-12. Follow Jacob Appelbaum's instructions to remove sensors ().	**CAUTION!** Before you start cutting metal to get to the accelerometer, put the piece of plastic that held the battery back on. This should help prevent you from slicing the ribbon cable if your knife slips.
+12. Follow Jacob Appelbaum's instructions to remove sensors (https://people.torproject.org/~ioerror/skunkworks/moto_e/).	**CAUTION!** Before you start cutting metal to get to the accelerometer, put the piece of plastic that held the battery back on. This should help prevent you from slicing the ribbon cable if your knife slips.
 
 13. Get the strongSwan VPN client working. Setup a strongSwan server (beyond the scope of this project) and create a certificate (also beyond the scope of this project) for it, as well as for the phone. (Note the limitations: https://wiki.strongswan.org/projects/strongswan/wiki/AndroidVPNClient)
 	I used my server's IP for the gateway (and thus, the subjectAltName of the gateway's certificate). I bundled the phone's key, cert, and CA cert using openssl pkcs12 to get a pfx file. The CA cert was in PEM format.
