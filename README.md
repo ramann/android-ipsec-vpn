@@ -1,6 +1,6 @@
-# Android Tether VPN
+# Android IPsec VPN
 
-## These are instructions to set up a not (terribly) invasive Android phone. 
+## Set up a not (terribly) invasive Android phone for use with strongSwan (and tethering!).
 
 They were inspired by and build upon instructions that Jacob Appelbaum created for removing various sensors from the first generation Motorola Moto E (about $60 in December 2015). When Clear Wireless turned of their network in November, a colleague (Paul Donohue) provided me with a script to tether while connected to a VPN. I have modifed it for use with USB tethering and added a couple routing entries to fix a DHCP re-lease issue. Additionally I created a wrapper around dnsmasq which can be used to change the DHCP range and lease time via a config file. I also have a couple of iptables commands that run at boot which disallow outbound traffic that is not related to the VPN or tethering. You don't need to log in with a Google account for any of this to work - all necessary apks have been included and you can take a look at FDroid if you want to check out some other apps.
 
